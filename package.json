@@ -10,12 +10,13 @@
   },
   "dependencies": {
     "framer-motion": "^11.3.2",
-    "next": "14.2.4",
+    "next": "^14.2.5",
     "next-video": "^1.1.1",
     "react": "^18",
     "react-dom": "^18",
     "react-responsive-carousel": "^3.2.23",
-    "react-simple-typewriter": "^5.0.1"
+    "react-simple-typewriter": "^5.0.1",
+    "swiper": "^11.1.5"
   },
   "devDependencies": {
     "@types/node": "^20",
