@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import quotes from "./components/array/quote"; // Import the quotes array
-import SwiperComponent from "./components/swiper/Card";
+import SwiperComponent from "./components/swiper/SwiperComponent";
 
 const images = [
   "/Image/thierry1.jpeg",
@@ -80,12 +80,12 @@ const Home: React.FC = () => {
                 className="absolute top-0 left-0 w-full h-full"
               >
                 <div className="h-44 w-44">
-                {/* <Image
+                 <Image
                   src={images[currentImageIndex]}
                   alt="Birthday Image"
                   layout="fill"
                   objectFit="cover"
-                /> */} 
+                /> 
                 </div>
                 
               </motion.div>
