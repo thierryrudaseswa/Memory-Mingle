@@ -1,0 +1,22 @@
+
+.elem {
+  position: relative !important; /* Ensure this style is applied */
+  height: 80% !important; /* Ensure the height is also overridden */
+  width: 70% !important;
+  inset: 0px !important;
+  color: transparent !important;
+}
+e.lemen{
+  position: relative !important; /* Ensure this style is applied */
+  height: 30% !important; /* Ensure the height is also overridden */
+  width: 100% !important;
+  inset: 0px !important;
+  color: transparent !important;
+
+}
+
+
+  
+ 
+ 
+ 
