@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "fireworks-js": "^2.10.8",
     "framer-motion": "^11.3.2",
     "next": "^14.2.5",
     "next-video": "^1.1.1",

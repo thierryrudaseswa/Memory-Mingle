@@ -42,53 +42,53 @@ body {
 /* styles/globals.css */
 
 /* Swiper container */
-.swiper-container {
+/* .swiper-container {
   width: 100%;
   height: auto;
   background-color: aqua;
 }
 
-/* Swiper wrapper */
+
 .swiper-wrapper {
   position:relative  !important;
-  height: 60% !important; /* Override height */
+  height: 60% !important; 
   display: flex;
   align-items: center;
-}
+} */
 
 /* Swiper slide */
-.swiper-slide {
+/* .swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f9f9f9; /* Example background color */
+  background-color: #f9f9f9; 
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Example shadow */
-}
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+}  */
 
 /* Swiper navigation buttons */
-.swiper-button-next,
+/* .swiper-button-next,
 .swiper-button-prev {
-  color: #000; /* Example button color */
-  background-color: rgba(255, 255, 255, 0.8); /* Example background */
+  color: #000; 
+  background-color: rgba(255, 255, 255, 0.8); 
   border-radius: 50%;
   padding: 10px;
-}
+} */
 
 /* Swiper pagination */
-.swiper-pagination-bullet {
-  background-color: #000; /* Example bullet color */
+/* .swiper-pagination-bullet {
+  background-color: #000; 
   opacity: 1;
 }
 .swiper-pagination-bullet-active {
-  background-color: #ff5722; /* Example active bullet color */
-}
+  background-color: #ff5722; 
+} */
 
-element.style {
+/* element.style {
   position: absolute;
   height: 70%;
   width: 100%;
   inset: 0px;
   color: transparent;
-}
+} */

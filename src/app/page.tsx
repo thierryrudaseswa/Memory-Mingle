@@ -1,3 +1,4 @@
+// pages/index.tsx
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
@@ -6,6 +7,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import quotes from "./components/array/quote"; // Import the quotes array
 import SwiperComponent from "./components/swiper/SwiperComponent";
+import Fireworks from "./components/Firework/Fireworks";
 
 const images = [
   "/Image/thierry1.jpeg",
@@ -37,11 +39,12 @@ const Home: React.FC = () => {
 
   return (
     <main
-      className="min-h-screen bg-custom-gradient-1 animate-gradient-change grid grid-rows-10 p-10"
+      className="relative min-h-screen bg-custom-gradient-1 animate-gradient-change p-10"
       style={{ color: "#001219" }}
     >
+      <Fireworks />
       {/* the whole screen */}
-      <div className="grid grid-cols-5 row-span-2 rounded-2xl">
+      <div className="grid grid-cols-5 row-span-2 rounded-2xl relative z-10">
         <div className="right col-span-2 grid justify-center items-center">
           <div>
             <div className="font-extrabold text-3xl flex justify-center">
@@ -100,7 +103,7 @@ const Home: React.FC = () => {
       </div>
 
       {/* about a person */}
-      <div className="about row-span-2 p-16">
+      <div className="about row-span-2 p-16 relative z-10">
         <div className="aboutd bg-orange-500 rounded-3xl p-8">
           <h1 className="flex justify-center items-center font-extrabold text-2xl">
             About John Doe
@@ -130,8 +133,7 @@ const Home: React.FC = () => {
       </div>
 
       {/* friend zone */}
-
-      <div className="zone b p-7 row-span-2">
+      <div className="zone b p-7 row-span-2 relative z-10">
         <div className="zon grid grid-rows-5 p-8 bg-orange-500 rounded-3xl">
           <div className=" row-span-1  flex justify-center items-center text-3xl ">
             FRIEND ZONE
@@ -208,42 +210,8 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* wishes */}
-
-      <div className="row-span-2 p-7 ">
-        <div className=" bg-white grid rounded-3xl p-8 gap-4">
-          <div className="head grid grid-cols-10 gap-2">
-            <div className="rate col-span-1 rounded-full flex justify-center font-extrabold text-2xl items-center h-20 w-20 bg-slate-500">
-              {" "}
-              96 %
-            </div>
-            <div className="par col-span-8 font-bold text-2xl    rounded-full p-4">
-              <p className=" flex justify-center items-center">
-                {" "}
-                Friendship isn't about who you've known the longest, it's about
-                who walked into your life and said,{" "}
-              </p>
-              <p className="  flex justify-center">
-                {" "}
-                I'm here for you,' and proved it.
-              </p>
-            </div>
-            <div className=" col-span-1 flex justify-end items-center">
-              <div className="relative h-20 w-20 rounded-3xl overflow-hidden">
-                <Image
-                  src="/Image/thierry28.jpeg"
-                  alt="Thierry's Photo"
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
-            </div>
-          </div>
-<div className="">
-<SwiperComponent /> 
-</div>
-         
-        </div>
+      <div className="mb-8">
+        <SwiperComponent />
       </div>
     </main>
   );
