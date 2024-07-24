@@ -1,0 +1,23 @@
+.card {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.9); /* Adjust based on your design */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .hidden-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.9); /* Adjust based on your design */
+    transition: transform 0.3s ease-in-out;
+  }
+  

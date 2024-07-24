@@ -8,6 +8,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import quotes from "./components/array/quote"; // Import the quotes array
 import SwiperComponent from "./components/swiper/SwiperComponent";
 import Fireworks from "./components/Firework/Fireworks";
+import Closer from "./components/Questions/Closer";
 
 const images = [
   "/Image/thierry1.jpeg",
@@ -212,6 +213,9 @@ const Home: React.FC = () => {
 
       <div className="mb-8">
         <SwiperComponent />
+      </div>
+      <div className="qs bg-black p-4 rounded-xl">
+        <Closer />
       </div>
     </main>
   );
