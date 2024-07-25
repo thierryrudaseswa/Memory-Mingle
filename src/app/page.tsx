@@ -155,7 +155,7 @@ const Home: React.FC = () => {
                   />
                 </div>
               </div>
-              <div className="testimony text-sm row-span-2">
+              <div className="testimony text-sm m-0 row-span-2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
                 deserunt perspiciatis maiores provident doloremque ipsam, quam
                 quis repudiandae, fugit alias, minima at. At harum ea velit modi
@@ -164,7 +164,7 @@ const Home: React.FC = () => {
             </div>
 
             <div className="first b grid grid-rows-6 p-8 gap-4 rounded-3xl">
-              <div className="name flex justify-center items-center row-span-1">
+              <div className="name p-0 flex justify-center items-center row-span-1">
                 {" "}
                 thierry
               </div>
