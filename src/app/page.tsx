@@ -1,14 +1,16 @@
 // pages/index.tsx
 "use client";
+import  "./globals.css"
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import quotes from "./components/array/quote"; // Import the quotes array
-import SwiperComponent from "./components/swiper/SwiperComponent";
+// import SwiperComponent from "./components/swiper/SwiperComponent";
 import Fireworks from "./components/Firework/Fireworks";
 import Closer from "./components/Questions/Closer";
+import HomePage from "./components/Swip/Swip";
 
 const images = [
   "/Image/thierry1.jpeg",
@@ -212,7 +214,8 @@ const Home: React.FC = () => {
       </div>
 
       <div className="mb-8">
-        <SwiperComponent />
+        {/* <SwiperComponent /> */}
+        <HomePage />
       </div>
       <div className="qs bg-black p-4 rounded-xl">
         <Closer />
