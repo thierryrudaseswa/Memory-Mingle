@@ -1,0 +1,51 @@
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .elem{
+    position: relative !important;
+    /* height: 90% !important; */
+    height: 200px !important;
+    width: 200px !important;
+    /* width: 70% !important; */
+    inset: 0px !important;
+    color: transparent !important;
+    border-radius: 10%;
+    animation: fadeIn 2s ease-in-out forwards;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .lemen {
+    position: relative !important;
+    height: 100px !important;
+    width: 100px !important;
+   
+    inset: 0px !important;
+    color: transparent !important;
+  }
+  
+  .swiper-slide-active .elem {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* .swiper-container {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
+  
