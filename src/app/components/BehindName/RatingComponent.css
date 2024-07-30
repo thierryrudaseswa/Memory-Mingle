@@ -1,0 +1,5 @@
+.hovered-star {
+    color: gold; /* Change to your desired hover color */ /* Set the font size to 96px */
+    transition: font-size 0.3s ease-in-out; /* Smooth transition effect */
+  }
+  
