@@ -152,7 +152,7 @@ const Home: React.FC = () => {
         <Celebrity />
       </div>
       <div className="">
-        <BehindName />
+        <BehindName name="Thieery" />
       </div>
     </main>
   );
