@@ -1,0 +1,43 @@
+.container {
+    background-color: #f97316; /* orange-400 */
+    padding: 16px;
+  }
+  
+  .form {
+    max-width: 20rem;
+    margin: 0 auto;
+    background-color: #06b6d4; /* cyan-500 */
+    padding: 16px;
+  }
+  
+  .input {
+    background-color: #f3f4f6; /* gray-50 */
+    border: 1px solid #d1d5db; /* gray-300 */
+    color: #111827; /* gray-900 */
+    font-size: 14px;
+    border-radius: 8px;
+    width: 100%;
+    padding: 8px;
+    outline: none;
+  }
+  
+  .input:focus {
+    border-color: #3b82f6; /* blue-500 */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* focus ring */
+  }
+  
+  .input::placeholder {
+    color: #9ca3af; /* gray-400 */
+  }
+  
+  .dark .input {
+    background-color: #374151; /* gray-700 */
+    border-color: #4b5563; /* gray-600 */
+    color: #ffffff; /* white */
+  }
+  
+  .dark .input:focus {
+    border-color: #3b82f6; /* blue-500 */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* focus ring */
+  }
+  

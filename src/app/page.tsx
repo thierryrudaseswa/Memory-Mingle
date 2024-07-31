@@ -14,6 +14,9 @@ import HomePage from "./components/Swip/Swip";
 import Friend from "./components/friends/Friend";
 import Celebrity from "./components/celebrity/Celebrity";
 import BehindName from "./components/BehindName/BehindName";
+import Guess from "./components/Guess/Guess";
+import Input from "./components/Input/Input";
+import InputName from "./components/Input/Input";
 
 const images = [
   "/Image/thierry1.jpeg",
@@ -154,6 +157,12 @@ const Home: React.FC = () => {
       <div className="">
         <BehindName name="Thieery" />
       </div>
+      <div className="">
+        <Guess />
+      </div>
+      {/* <div className="">
+        <InputName />
+      </div> */}
     </main>
   );
 };
