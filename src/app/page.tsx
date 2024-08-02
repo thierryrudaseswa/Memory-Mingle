@@ -17,6 +17,8 @@ import BehindName from "./components/BehindName/BehindName";
 import Guess from "./components/Guess/Guess";
 import Input from "./components/Input/Input";
 import InputName from "./components/Input/Input";
+import MakeWish from "./components/MakeWish/MakeWish";
+import Questionnaire from "./components/Rather/Rather";
 
 const images = [
   "/Image/thierry1.jpeg",
@@ -148,7 +150,7 @@ const Home: React.FC = () => {
         {/* <SwiperComponent /> */}
         <HomePage />
       </div>
-      <div className="qs bg-black p-4 rounded-xl">
+      <div className="qs p-4 rounded-xl">
         <Closer />
       </div>
       <div className="">
@@ -160,9 +162,10 @@ const Home: React.FC = () => {
       <div className="">
         <Guess />
       </div>
-      {/* <div className="">
-        <InputName />
-      </div> */}
+      <div className="">
+        <MakeWish />
+      </div>
+      <Questionnaire />
     </main>
   );
 };
