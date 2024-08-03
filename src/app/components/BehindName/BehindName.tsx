@@ -51,8 +51,9 @@ const RatingComponent: React.FC<{ letter: string, word: string }> = ({ letter, w
   };
 
   return (
-    <div className="">
-      <div className="grid grid-rows-2 bg-white justify-center items-center p-2 rounded-xl">
+    <div className=" text-white
+    ">
+      <div className="grid grid-rows-2 justify-center items-center p-2 rounded-xl" style={{ background: "#0e0146" }}>
         <div className="row-span-1">
           <span>{letter}</span>: <span>{word}</span>
         </div>
@@ -92,16 +93,10 @@ const BehindName: React.FC<{ name: string }> = ({ name }) => {
   }, [upperCaseName]);
 
   return (
-    <div className="bg-slate-500 p-4">
-      <div className="text-white text-center mb-4">TRULY NAME EXPLAINS</div>
-      <div className="bg-yellow-300 p-3 rounded-xl">
-        {/* <div className="grid grid-rows-1 gap-4 mb-4">
-          {letterWordPairs.map(({ letter, word }, index) => (
-            <div key={index} className="flex justify-between items-center p-2 m-2 bg-white rounded-xl">
-              <span className="font-bold text-xl">{letter}</span>: <span>{word}</span>
-            </div>
-          ))}
-        </div> */}
+    <div className="p-4 text-white" style={{background:"#020223"}}>
+      <div className="text-center mb-4" >TRULY NAME EXPLAINS</div>
+      <div className="p-3 rounded-xl">
+       
         <div className="flex justify-between flex-wrap gap-4 mt-4">
           {letterWordPairs.map(({ letter, word }, index) => (
             <RatingComponent key={index} letter={letter} word={word} />

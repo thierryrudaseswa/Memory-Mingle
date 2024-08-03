@@ -122,6 +122,7 @@ html {
 body {
   font-size: 1.6rem;
   background: var(--bg);
+  background-color: #001128;
 }
 
 /* Container styling */
@@ -129,7 +130,7 @@ body {
   max-width: 120rem;
    padding: 3px;
   margin: 0 auto;
-  background-color: #1fe91f;
+  background-color: #020223;
   border-radius: 20px;
 }
 
@@ -147,7 +148,7 @@ body {
   height: 50rem;
   /* padding: 2rem 0; */
   position: relative;
-  background-color: #6a59ff;
+  /* background-color: #6a59ff; */
 }
 
 /* Swiper slide styles */
@@ -155,10 +156,10 @@ body {
   width: 70rem !important;
   height: 50rem !important;
   position: relative;
-  background-color: aqua;
+  /* background-color: aqua; */
   padding: 2px;
   border-radius: 20px !important;
-  overflow-y: scroll !important;
+  /* overflow-y: scroll !important; */
 }
 
 @media (max-width: 500px) {
@@ -223,7 +224,7 @@ body {
   .slider-controler .swiper-button-prev {
     left: 30% !important;
     transform: translateX(-30%) !important;
-    background-color: aqua !important;
+    /* background-color: aqua !important; */
   }
 }
 
@@ -268,4 +269,21 @@ body {
 
 .swiper-pagination .swiper-pagination-bullet-active {
   background: var(--primary);
+}
+
+
+.stars {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.stars canvas {
+  display: block;
+}
+.aboutfriend {
+  background-color: #020223;
 }

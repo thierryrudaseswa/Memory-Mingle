@@ -19,6 +19,8 @@ import Input from "./components/Input/Input";
 import InputName from "./components/Input/Input";
 import MakeWish from "./components/MakeWish/MakeWish";
 import Questionnaire from "./components/Rather/Rather";
+import StarryBackground from "./components/Stearth/Star";
+import RotatingEarth from "./components/Stearth/Earth";
 
 const images = [
   "/Image/thierry1.jpeg",
@@ -50,12 +52,16 @@ const Home: React.FC = () => {
 
   return (
     <main
-      className="relative min-h-screen bg-custom-gradient-1 animate-gradient-change p-10"
+      className="relative  min-h-screen bg-custom-gradient-1 animate-gradient-change p-10"
       style={{ color: "#001219" }}
     >
-      <Fireworks />
+      {/* <Fireworks /> */}
       {/* the whole screen */}
-      <div className="grid grid-cols-5 row-span-2 rounded-2xl relative z-10">
+      {/* <div className="relative h-screen w-screen overflow-hidden">
+      <StarryBackground/>
+      <RotatingEarth />
+    </div> */}
+      <div className="grid grid-cols-5 row-span-2 rounded-2xl relative z-10 text-white">
         <div className="right col-span-2 grid justify-center items-center">
           <div>
             <div className="font-extrabold text-3xl flex justify-center">
@@ -78,7 +84,7 @@ const Home: React.FC = () => {
                 {quotes.map((quote, index) => (
                   <div
                     key={index}
-                    className="font-semibold text-2xl max-w-xl mb-8 bg-red-500 p-2 rounded-md"
+                    className="font-semibold text-2xl max-w-xl mb-8  p-4 rounded-3xl" style={{ background: "#0e0146" }} 
                   >
                     {quote}
                   </div>
@@ -114,8 +120,8 @@ const Home: React.FC = () => {
       </div>
 
       {/* about a person */}
-      <div className="about row-span-2 p-16 relative z-10">
-        <div className="aboutd bg-orange-500 rounded-3xl p-8">
+      <div className="about row-span-2 p-16 relative z-10 text-white">
+        <div className="aboutfriend  rounded-3xl p-8">
           <h1 className="flex justify-center items-center font-extrabold text-2xl">
             About John Doe
           </h1>

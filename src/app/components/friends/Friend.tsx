@@ -1,11 +1,11 @@
 import React from 'react'
 import Image from 'next/image'
-
+import "./Friend.css"
 
 const Friend = () => {
   return (
-    <div className="zone b p-7 row-span-2 relative z-10">
-        <div className="zon grid grid-rows-5 p-8 bg-orange-500 rounded-3xl">
+    <div className="zone b p-7 row-span-2 relative z-10 text-white">
+        <div className="zon grid grid-rows-5 p-8  rounded-3xl">
           <div className=" row-span-1  flex justify-center items-center text-3xl ">
             FRIEND 911
           </div>

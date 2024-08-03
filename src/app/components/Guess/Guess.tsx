@@ -26,10 +26,10 @@ const Guess: React.FC = () => {
   };
 
   return (
-    <div className="bg-green-600 p-4">
+    <div className=" p-4 mt-4" style={{ background: "#020223" }}>
       <div className="text-white text-2xl mb-4">Guess The Age</div>
       <div className="grid grid-cols-3 gap-4">
-        <div className="col-span-1 bg-emerald-300 grid justify-center">
+        <div className="col-span-1 grid justify-center">
           <div className="relative h-96 w-96 rounded-3xl overflow-hidden">
             <Image
               src="/Image/thierry28.jpeg"
@@ -39,7 +39,7 @@ const Guess: React.FC = () => {
             />
           </div>
         </div>
-        <div className="col-span-2 bg-amber-400 p-4">
+        <div className="col-span-2 text-white p-4">
           <p className="mb-4">
             "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque
             delectus neque aliquid? Optio soluta maxime sit dolores sequi

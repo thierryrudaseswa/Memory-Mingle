@@ -19,8 +19,8 @@ import { WishPerson,Person } from '@/app/data/wish';
 
 const Card = ({ person }: { person: Person }) => (
   
-    <div className="smsfr grid  p-3 rounded-3xl  bg-orange-700">
-<div className="  grid bg-white   grid-cols-3">
+    <div className="smsfr grid  p-3 rounded-3xl text-white  " style={{ background: "#0e0146" }}>
+<div className="  grid  grid-cols-3">
 <div className=" p-2 h-96 rounded-2xl col-span-1 grid justify-start">
         <div className="`relative rounded-3xl overflow-hidden p-2 ">
           {person.photo && (
@@ -79,7 +79,7 @@ const Card = ({ person }: { person: Person }) => (
 const HomePage: NextPage = () => {
   return (
     <div className="container">
-      <div className=" flex justify-center items-start bg-slate-500 h-20">THE MERVEROUS WISHES AND PROMISES</div>
+      <div className=" flex justify-center items-start text-white h-20">THE MERVEROUS WISHES AND PROMISES</div>
       <Swiper
         modules={[EffectCoverflow, Pagination, Navigation]}
         effect="coverflow"
@@ -100,26 +100,7 @@ const HomePage: NextPage = () => {
         }}
         className="swiper_container"
       >
-        {/* {WishPers} */}
-        {/* <SwiperSlide>
-          <Image src={slide_image_1} alt="slide_image" layout="fill" objectFit="cover" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image src={slide_image_2} alt="slide_image" layout="fill" objectFit="cover" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image src={slide_image_3} alt="slide_image" layout="fill" objectFit="cover" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image src={slide_image_4} alt="slide_image" layout="fill" objectFit="cover" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image src={slide_image_5} alt="slide_image" layout="fill" objectFit="cover" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Image src={slide_image_6} alt="slide_image" layout="fill" objectFit="cover" />
-        </SwiperSlide> */}
-
+        
         {WishPerson.map((person: Person,index:number)=>(
 
         
