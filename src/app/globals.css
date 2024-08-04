@@ -73,6 +73,7 @@
   --primary: #6a59ff;
   --white: #ffffff;
   --bg: #f5f5f5;
+  scrollbar-width: 2px !important;
 }
 
 /* General HTML settings */
@@ -117,6 +118,25 @@ html {
 ::-webkit-scrollbar-track {
   background: #f9f9f9;
 }
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  width: 12px; /* Width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #020223; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+  border: 3px solid #f1f1f1; /* Padding around the thumb */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #020223; /* Color when hovered */
+}
+
 
 /* Base body styles */
 body {
@@ -144,8 +164,8 @@ body {
 /* Swiper container styles */
 .swiper_container {
 
-  width: 115rem;
-  height: 50rem;
+  /* width: 115rem;
+  height: 50rem; */
   /* padding: 2rem 0; */
   position: relative;
   /* background-color: #6a59ff; */
@@ -154,12 +174,32 @@ body {
 /* Swiper slide styles */
 .swiper-slide {
   width: 70rem !important;
-  height: 50rem !important;
+  height: 45rem !important;
+  /* background-color: aqua !important; */
+
   position: relative;
   /* background-color: aqua; */
   padding: 2px;
   border-radius: 20px !important;
   /* overflow-y: scroll !important; */
+}
+@media (max-width: 825px) {
+ 
+  .swiper-slide {
+    width: 52rem !important;
+    height: 52rem !important;
+  
+  }
+ 
+}
+@media (max-width: 700px) {
+ 
+  .swiper-slide {
+    width: 44rem !important;
+    height: 44rem !important;
+  
+  }
+ 
 }
 
 @media (max-width: 500px) {
@@ -167,10 +207,11 @@ body {
     height: 47rem;
     width: 70rem;
   }
-  .swiper-slide {
+  /* .swiper-slide {
     width: 28rem !important;
     height: 36rem !important;
-  }
+  
+  } */
   .swiper-slide img {
     width: 28rem !important;
     height: 36rem !important;
@@ -287,3 +328,4 @@ body {
 .aboutfriend {
   background-color: #020223;
 }
+

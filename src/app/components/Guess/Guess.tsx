@@ -27,10 +27,10 @@ const Guess: React.FC = () => {
 
   return (
     <div className=" p-4 mt-4" style={{ background: "#020223" }}>
-      <div className="text-white text-2xl mb-4">Guess The Age</div>
+      <div className="text-white text-2xl mb-4 flex justify-center items-center bg-black h-20">Guess The Age</div>
       <div className="grid grid-cols-3 gap-4">
         <div className="col-span-1 grid justify-center">
-          <div className="relative h-96 w-96 rounded-3xl overflow-hidden">
+          <div className="relative h-96 w-96 rounded-3xl overflow-hidden lg:w-60">
             <Image
               src="/Image/thierry28.jpeg"
               alt="Thierry's Photo"

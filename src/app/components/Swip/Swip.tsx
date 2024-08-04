@@ -19,10 +19,10 @@ import { WishPerson,Person } from '@/app/data/wish';
 
 const Card = ({ person }: { person: Person }) => (
   
-    <div className="smsfr grid  p-3 rounded-3xl text-white  " style={{ background: "#0e0146" }}>
+    <div className="smsfr grid  p-6 rounded-3xl justify-center text-white lg:w-[500px] xs:w-[430px] xs:h-[430px]" style={{ background: "#0e0146" }}>
 <div className="  grid  grid-cols-3">
-<div className=" p-2 h-96 rounded-2xl col-span-1 grid justify-start">
-        <div className="`relative rounded-3xl overflow-hidden p-2 ">
+<div className=" p-2 h-80 rounded-2xl col-span-1 grid justify-start">
+        <div className="`relative rounded-3xl overflow-hidden p-2 xs:h-72">
           {person.photo && (
             <Image
               src={person.photo}
@@ -45,15 +45,15 @@ const Card = ({ person }: { person: Person }) => (
 </div>
 <div className="">
 <div className="gif  gap-4 p-4 rounded-2xl">
-        <div className=" grid grid-rows-4">
-          {person.promise && <p className="row-span-1 flex justify-center items-center font-bold">{person.promise}</p>}
+        <div className="">
+          {person.promise && <p className="row-span-1 flex justify-center items-center font-bold mb-5">{person.promise}</p>}
           {person.gift && (
-            <p className="font-extrabold grid  pl-2 text-2xl row-span-1 justify-center items-center">
+            <p className="font-extrabold grid  pl-2 text-2xl mb-2 justify-center items-center">
               {person.gift} !!
             </p>
           )}
           <div className="flex items-center justify-center  row-span-2">
-            <div className="relative rounded-3xl overflow-hidden ">
+            <div className="relative rounded-3xl overflow-hidden xs:h-40">
               {person.photoTwo && (
                 <Image
                   src={person.photoTwo}
@@ -104,7 +104,7 @@ const HomePage: NextPage = () => {
         {WishPerson.map((person: Person,index:number)=>(
 
         
-        <SwiperSlide key={index} className="">
+        <SwiperSlide key={index} className="lg:w-[500px]">
           <Card person={person} />
 
     

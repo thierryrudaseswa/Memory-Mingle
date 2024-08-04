@@ -8,7 +8,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="border-gray-200 ">
+    <nav className=" text-white ">
       <div className="flex  flex-wrap items-center justify-between rounded-2xl p-4 relative">
         <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <div className="relative h-14 w-16 rounded-3xl overflow-hidden">
