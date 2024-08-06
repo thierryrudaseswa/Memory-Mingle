@@ -22,6 +22,7 @@ import Questionnaire from "./components/Rather/Rather";
 import StarryBackground from "./components/Stearth/Star";
 import RotatingEarth from "./components/Stearth/Earth";
 import About from "./components/About/About";
+import connectToDatabase from "./backend/mongoose";
 
 const images = [
   "/Image/thierry1.jpeg",
@@ -32,6 +33,19 @@ const images = [
 const Home: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
+
+
+  useEffect(()=>{
+    connectToDatabase()
+    .then(()=>{
+      console.log("connect to the database ")
+    })
+    .catch((error)=>{
+      console.error("error while connecting to the database ",error);
+      
+    });
+    
+  },[])
 
   useEffect(() => {
     // Change the image every 10 seconds (10000 milliseconds)
