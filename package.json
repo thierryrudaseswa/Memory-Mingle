@@ -14,11 +14,13 @@
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^5.16.5",
     "@mui/material": "^5.16.5",
+    "@types/mongoose": "^5.11.97",
     "aceternity-ui": "^0.2.2",
     "class-variance-authority": "^0.7.0",
     "cloudinary": "^2.4.0",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.5",
+    "formidable": "^3.5.1",
     "framer-motion": "^11.3.17",
     "fs": "^0.0.1-security",
     "ionicons": "^7.4.0",
@@ -39,6 +41,7 @@
     "three": "^0.167.1"
   },
   "devDependencies": {
+    "@types/formidable": "^3.4.5",
     "@types/node": "^20",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

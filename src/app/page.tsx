@@ -22,7 +22,10 @@ import Questionnaire from "./components/Rather/Rather";
 import StarryBackground from "./components/Stearth/Star";
 import RotatingEarth from "./components/Stearth/Earth";
 import About from "./components/About/About";
-import connectToDatabase from "./backend/mongoose";
+import connectDB from "../../config/database";
+
+
+// import connectToDatabase from "./backend/mongoose";
 
 const images = [
   "/Image/thierry1.jpeg",
@@ -35,18 +38,6 @@ const Home: React.FC = () => {
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
 
 
-  useEffect(()=>{
-    connectToDatabase()
-    .then(()=>{
-      console.log("connect to the database ")
-    })
-    .catch((error)=>{
-      console.error("error while connecting to the database ",error);
-      
-    });
-    
-  },[])
-
   useEffect(() => {
     // Change the image every 10 seconds (10000 milliseconds)
     const timer = setInterval(() => {
@@ -55,6 +46,17 @@ const Home: React.FC = () => {
 
     return () => clearInterval(timer);
   }, []);
+// const connect = async ()=>{
+//   const res = await connectDB();
+//   console.log(res);
+// }
+// connect();
+
+const connect = async ()=>{
+  const res = await connectDB();
+  console.log(res)
+}
+connect();
 
   useEffect(() => {
     // Automatically change quotes every 10 seconds
