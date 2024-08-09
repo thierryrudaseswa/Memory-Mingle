@@ -22,7 +22,9 @@ import StarryBackground from "./components/Stearth/Star";
 import RotatingEarth from "./components/Stearth/Earth";
 import About from "./components/About/About";
 import connectDB from "../../config/database";
+import { QueryClient, QueryClientProvider } from 'react-query';
 
+const queryClient = new QueryClient();
 // Replace this array with your Cloudinary URLs
 const images = [
   "https://res.cloudinary.com/daexk7jta/image/upload/v1723225934/Rwaka_l63rrc.jpg",
@@ -123,9 +125,12 @@ const Home: React.FC = () => {
       </div>
 
       {/* about a person */}
+      <QueryClientProvider client={queryClient}>
       <div className="about row-span-2 p- relative z-10 text-white">
         <About />
       </div>
+      </QueryClientProvider>
+
 
       {/* Friedn */}
       <div className=" ">

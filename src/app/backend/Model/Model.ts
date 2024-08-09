@@ -4,7 +4,7 @@ import { text } from "stream/consumers";
 export interface IWish extends Document{
     name: string;
     text:string;
-    images:string[];
+    // images:string[];
 }
 
 const WishSchema: Schema = new Schema({
@@ -16,7 +16,7 @@ const WishSchema: Schema = new Schema({
         minlength: 100, 
         maxlength: 250 
       },
-    images:{type:[String],required:true}
+    // images:{type:[String],required:true}
 });
 
 
