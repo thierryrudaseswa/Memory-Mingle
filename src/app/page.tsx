@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import quotes from "./components/array/quote"; // Import the quotes array
-// import SwiperComponent from "./components/swiper/SwiperComponent";
 import Fireworks from "./components/Firework/Fireworks";
 import Closer from "./components/Questions/Closer";
 import HomePage from "./components/Swip/Swip";
@@ -24,19 +23,16 @@ import RotatingEarth from "./components/Stearth/Earth";
 import About from "./components/About/About";
 import connectDB from "../../config/database";
 
-
-// import connectToDatabase from "./backend/mongoose";
-
+// Replace this array with your Cloudinary URLs
 const images = [
-  "/Image/thierry1.jpeg",
-  "/Image/thierry28.jpeg",
-  "/Image/thierry.jpg",
+  "https://res.cloudinary.com/daexk7jta/image/upload/v1723225934/Rwaka_l63rrc.jpg",
+  "https://res.cloudinary.com/daexk7jta/image/upload/v1723227514/Ruda_ggmivi.jpg", // Replace with actual URLs
+  "https://res.cloudinary.com/daexk7jta/image/upload/v1723227517/bbyl_lchxca.png"  // Replace with actual URLs
 ];
 
 const Home: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
-
 
   useEffect(() => {
     // Change the image every 10 seconds (10000 milliseconds)
@@ -46,17 +42,12 @@ const Home: React.FC = () => {
 
     return () => clearInterval(timer);
   }, []);
-// const connect = async ()=>{
-//   const res = await connectDB();
-//   console.log(res);
-// }
-// connect();
 
-const connect = async ()=>{
-  const res = await connectDB();
-  console.log(res)
-}
-connect();
+  const connect = async () => {
+    const res = await connectDB();
+    console.log(res)
+  }
+  connect();
 
   useEffect(() => {
     // Automatically change quotes every 10 seconds

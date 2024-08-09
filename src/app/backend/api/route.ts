@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { IncomingForm } from "formidable";
+import { IncomingForm, File } from "formidable";
 import connectDB from "../../../../config/database";
 import Wish from "../Model/Model";
 import { v2 as cloudinary } from 'cloudinary';
@@ -36,35 +36,24 @@ export async function POST(request: NextRequest) {
 
         const { fields, files } = data;
         const { name, text } = fields;
-        const imageFiles = files.images;
+        const imageFiles = Array.isArray(files.images) ? files.images : [files.images]; // Handle multiple or single file
 
         // Connect to the database
         await connectDB();
 
         // Upload images to Cloudinary
-        let uploadedImages: string[] = [];
+        const uploadedImages = await Promise.all(
+            imageFiles.map(async (file: File) => {
+                const path = file.filepath;
+                const result = await cloudinary.uploader.upload(path, {
+                    folder: "wishes",
+                });
+                fs.unlinkSync(path); // Delete the local file after upload
+                return result.secure_url;
+            })
+        );
 
-        if (Array.isArray(imageFiles)) {
-            uploadedImages = await Promise.all(
-                imageFiles.map(async (file: any) => {
-                    const path = file.filepath;
-                    const result = await cloudinary.uploader.upload(path, {
-                        folder: "wishes",
-                    });
-                    fs.unlinkSync(path); // Delete the local file after upload
-                    return result.secure_url;
-                })
-            );
-        } else if (imageFiles) {
-            const path = imageFiles.filepath;
-            const result = await cloudinary.uploader.upload(path, {
-                folder: "wishes",
-            });
-            fs.unlinkSync(path); // Delete the local file after upload
-            uploadedImages.push(result.secure_url);
-        }
-
-        // Create a new Wish documen
+        // Create a new Wish document
         await Wish.create({ name, text, images: uploadedImages });
 
         return NextResponse.json({ message: "Wish Created" }, { status: 201 });
