@@ -1,7 +1,13 @@
 'use client'
 import React, { useState } from 'react';
 
-const Closer: React.FC = () => {
+interface closerAnswers {
+  person: {
+    answers: string[];
+  }
+}
+
+const Closer: React.FC<closerAnswers> = ({person}) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const handleToggle = (index: number) => {
@@ -11,19 +17,19 @@ const Closer: React.FC = () => {
   const qaPairs = [
     {
       question: "What kind of books, movies, or music do you find most inspiring, and why?",
-      answer: "Anything with superheroes. Saving the world while looking cool? Sign me up! Plus, I get to live vicariously through their adventures.",
+      answer: person.answers[0],
     },
     {
       question: "Who has been the most influential person in your life, and what lessons have you learned from them?",
-      answer: "My dog, Max. He’s taught me the art of napping, the joy of endless snacks, and that sometimes a wagging tail is the best answer.",
+      answer: person.answers[1],
     },
     {
       question: "What are some goals or dreams you have for the future, and what steps are you taking or planning to take to achieve them?",
-      answer: "To travel the world and eat at least one weird food in each country. Step one: get a passport. Step two: embrace the weird and wonderful!",
+      answer:person.answers[2],
     },
     {
       question: "What’s an experience or challenge that you’ve faced that taught you an important life lesson?",
-      answer: "Burned my eyebrows off in a BBQ mishap. Lesson: always respect the grill! Now I have a healthy fear of open flames and a funny story to tell.",
+      answer: person.answers[3],
     },
   ];
 

@@ -10,7 +10,7 @@ export const POST = async( request:Request) =>{
         const newNameandPara = new Wish(body);
         await newNameandPara.save();
 
-        return new NextResponse("name and text created successfully",{status:201})
+        return new NextResponse(newNameandPara,{status:201})
     }catch(error:any){
         return new NextResponse("Error in creating name and text"  + error.message,{
             status: 500

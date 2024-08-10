@@ -2,10 +2,18 @@
 import Image from "next/image";
 import { useState, ChangeEvent } from "react";
 
-const Guess: React.FC = () => {
+
+interface guessdAge {
+  person :{
+    age:number;
+    agetext:string;
+  }
+}
+
+const Guess: React.FC<guessdAge>= ({person}) => {
   const [guess, setGuess] = useState<string>("");
   const [feedback, setFeedback] = useState<string>("");
-  const correctAge = 28; // Assuming the correct age is 28
+  const correctAge = person.age // Assuming the correct age is 28
 
   const handleGuess = () => {
     console.log("handleGuess called");
@@ -15,7 +23,7 @@ const Guess: React.FC = () => {
     if (guessedAge === correctAge) {
       setFeedback("Correct! You guessed the right age.");
     } else {
-      setFeedback("Incorrect! Try again.");
+      setFeedback("Nice try, but that's not it. Keep guessing!");
     }
   };
 
@@ -41,10 +49,7 @@ const Guess: React.FC = () => {
         </div>
         <div className="col-span-2 text-white p-4">
           <p className="mb-4">
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque
-            delectus neque aliquid? Optio soluta maxime sit dolores sequi
-            accusantium consequuntur, doloremque unde aperiam qui numquam beatae
-            molestias quaerat, ratione provident!"
+          {person.agetext}
           </p>
           <div className="mb-4">
             <input

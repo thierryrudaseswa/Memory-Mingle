@@ -1,23 +1,21 @@
 import React from 'react';
 import Image from 'next/image';
 import { useQuery } from 'react-query';
-
-const fetchData = async () => {
-  const response = await fetch('http://localhost:3000/backend/api/');
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
+interface AboutProps{
+  person:{
+    name:string;
+    text:string
   }
-  return response.json();
-};
+}
 
-const About = () => {
-  const { data, error, isLoading } = useQuery('aboutData', fetchData);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {(error as Error).message}</div>;
+const About : React.FC<AboutProps>= ({person}) => {
+ 
+
+
 
   // Assuming data is an array and you want to display the first item
-  const person = data[0];
+ 
 
   return (
     <div className="aboutfriend rounded-3xl p-8">

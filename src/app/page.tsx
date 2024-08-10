@@ -23,8 +23,16 @@ import RotatingEarth from "./components/Stearth/Earth";
 import About from "./components/About/About";
 import connectDB from "../../config/database";
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { useQuery } from 'react-query';
 
 const queryClient = new QueryClient();
+const fetchData = async () => {
+  const response = await fetch('http://localhost:3000/backend/api/');
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return response.json();
+};
 // Replace this array with your Cloudinary URLs
 const images = [
   "https://res.cloudinary.com/daexk7jta/image/upload/v1723225934/Rwaka_l63rrc.jpg",
@@ -35,6 +43,8 @@ const images = [
 const Home: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
+
+ 
 
   useEffect(() => {
     // Change the image every 10 seconds (10000 milliseconds)
@@ -59,6 +69,14 @@ const Home: React.FC = () => {
 
     return () => clearInterval(quoteTimer);
   }, []);
+   // fetching data
+   const { data, error, isLoading } = useQuery('aboutData', fetchData);
+
+   if (isLoading) return <div>Loading...</div>;
+   if (error) return <div>Error: {(error as Error).message}</div>;
+ 
+   // Assuming data is an array and you want to display the first item
+   const person = data[0];
 
   return (
     <main
@@ -72,7 +90,7 @@ const Home: React.FC = () => {
               HAPPY BIRTHDAY
             </div>
             <div className="font-extrabold text-3xl flex justify-center">
-              John Doe
+              {person.name}
             </div>
             <div className="quote-container mt-4 p-2  grid ml-2 justify-center h-40">
               <Carousel
@@ -127,14 +145,14 @@ const Home: React.FC = () => {
       {/* about a person */}
       <QueryClientProvider client={queryClient}>
       <div className="about row-span-2 p- relative z-10 text-white">
-        <About />
+        <About person={person}/>
       </div>
       </QueryClientProvider>
 
 
       {/* Friedn */}
       <div className=" ">
-        <Friend />
+        <Friend person={person}/>
       </div>
 
       {/* Homepage */}
@@ -144,23 +162,23 @@ const Home: React.FC = () => {
       </div>
       {/* Closer */}
       <div className="qs p-4 rounded-xl">
-        <Closer />
+        <Closer person={person}/>
       </div>
       {/* Celebrity */}
       <div className="">
-        <Celebrity />
+        <Celebrity person={person} />
       </div>
       {/* BehindNAme */}
       <div className="">
-        <BehindName name="Thieery" />
+        <BehindName name={person.name} />
       </div>
       {/* Guess */}
       <div className="">
-        <Guess />
+        <Guess person={person}/>
       </div>
       {/* MakeWish */}
       <div className="">
-        <MakeWish />
+        <MakeWish person={person}/>
       </div>
       {/* Question */}
       <div className="">

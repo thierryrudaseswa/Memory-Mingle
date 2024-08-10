@@ -1,7 +1,13 @@
 import React from "react";
 import Image from "next/image";
 
-const MakeWish = () => {
+interface aboutperson{
+  person:{
+    wishing: string;
+  }
+}
+
+const MakeWish:React.FC<aboutperson> = ({person}) => {
   return (
     <div className=" grid mt-5 justify-center items-center gap-6 p-3 text-white" style={{background:"#020223"}}>
       <div className="">
@@ -9,10 +15,7 @@ const MakeWish = () => {
       <div className="  p-10">
       <div className=" grid grid-cols-3 justify-cente items-center rounded-2xl"  style={{background:"#0e0146"}}>
           <div className=" col-span-2 font-light text-2xl ">
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Consequuntur pariatur labore necessitatibus? Molestiae officiis et
-            nisi natus facere vitae totam maiores aspernatur quos, quod beatae
-            alias quae provident quo culpa."
+            {person.wishing}
           </div>
           <div className=" col-span-1 grid justify-center">
             <div className="relative h-96 w-96 rounded-3xl overflow-hidden lg:w-56">
