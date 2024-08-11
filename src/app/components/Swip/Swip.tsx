@@ -11,10 +11,24 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Image from 'next/image';
 import './Swip.css'
-
-
-
 import { WishPerson,Person } from '@/app/data/wish';
+
+
+
+// import { QueryClient, useQuery } from 'react-query';
+// const queryClient = new QueryClient();
+
+
+const fetchData = async () => {
+    const response = await fetch('localhost:3000/backend/api/FriendWish');
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  };
+
+
+
 
 
 const Card = ({ person }: { person: Person }) => (

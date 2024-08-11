@@ -1,4 +1,17 @@
 // wish.js
+
+import { QueryClient, useQuery } from 'react-query';
+const queryClient = new QueryClient();
+
+
+const fetchData = async () => {
+    const response = await fetch('localhost:3000/backend/api/FriendWish');
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  };
+
 export interface Person {
     name: string;
     photo: string;

@@ -1,32 +1,33 @@
+
 import { request } from "http";
 import { NextResponse } from "next/server";
-import connectDB from "../../../../config/database";
-import Wish from "../Model/Model"
-import FriendSchema from "../Model/WishModel"
+import connectDB from "../../../../../config/database";
+
+import FriendSchema from "../../Model/WishModel"
 
 
-// Post of the user only
-
-export const POST = async( request:Request) =>{
+export const POST = async(request:Request) =>{
     try{
-        const body =    await request.json();
         await connectDB();
-        const newNameandPara = new Wish(body);
-        await newNameandPara.save();
+       
+        const body =  await request.json();
+        const newFriendWish = new FriendSchema(body)
+        await newFriendWish.save();
+        return new NextResponse(newFriendWish,{status:201})
 
-        return new NextResponse(newNameandPara,{status:201})
+
     }catch(error:any){
-        return new NextResponse("Error in creating name and text"  + error.message,{
-            status: 500
+        return new NextResponse("Error in creating data of the friend wish" + error.message, {
+            status:500
         })
     }
-}
-// Getting data of user
 
-export const GET = async (req: Request) => {
+}
+
+export const GET = async(request:Request)=>{
     try {
         await connectDB();
-        const data = await Wish.find();
+        const data = await FriendSchema.find();
 
         // Remove the `_id` field from each document
         const filteredData = data.map((item) => {
@@ -43,7 +44,4 @@ export const GET = async (req: Request) => {
             status: 500,
         });
     }
-};
-
-
-// post of the friend
+}
