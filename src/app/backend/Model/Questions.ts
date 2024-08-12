@@ -10,5 +10,5 @@ const WishSchema: Schema = new Schema({
     selectedOption: { type: String, required: true },
 });
 
-const Wish = mongoose.models.Wish || mongoose.model<IWish>("Wish", WishSchema);
-export default Wish;
+const Question = mongoose.models.Question || mongoose.model<IWish>("Question", WishSchema);
+export default Question;
