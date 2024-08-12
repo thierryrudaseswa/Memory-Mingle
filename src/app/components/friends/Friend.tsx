@@ -48,3 +48,5 @@ const Friend: React.FC<aboutPerson> = ({ person }) => {
 }
 
 export default Friend;
+  
+   

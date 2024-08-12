@@ -26,6 +26,8 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { useQuery } from 'react-query';
 
 const queryClient = new QueryClient();
+
+
 const fetchData = async () => {
   const response = await fetch('http://localhost:3000/backend/api/');
   if (!response.ok) {
@@ -33,6 +35,8 @@ const fetchData = async () => {
   }
   return response.json();
 };
+
+
 // Replace this array with your Cloudinary URLs
 const images = [
   "https://res.cloudinary.com/daexk7jta/image/upload/v1723225934/Rwaka_l63rrc.jpg",
