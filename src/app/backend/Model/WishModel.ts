@@ -9,8 +9,8 @@ export interface IFriendWish extends Document {
 
 // Schema for FriendWish
 const FriendWishSchema: Schema = new Schema({
-    FriendWish: { type: String, required: true },
-    FriendName: { type: String, required: true, minlength: 120, maxlength: 450 },
+    FriendName: { type: String, required: true },
+    FriendWish: { type: String, required: true, minlength: 120, maxlength: 450 },
     GiftName: { type: String, required: true }
 });
 

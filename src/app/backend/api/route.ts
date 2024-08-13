@@ -46,4 +46,28 @@ export const GET = async (req: Request) => {
 };
 
 
+
+export const PATCH = async (request: Request) => {
+    try {
+        const { id, ...updateFields } = await request.json(); // Extract the ID and the fields to update
+        await connectDB(); // Ensure you're connected to the database
+
+        // Find the document by ID and update only the provided fields
+        const updatedWish = await Wish.findByIdAndUpdate(
+            id,
+            { $set: updateFields }, // Use $set to update only the specified fields
+            { new: true, runValidators: true } // Return the updated document and run schema validation
+        );
+
+        if (!updatedWish) {
+            return new NextResponse("Wish not found", { status: 404 });
+        }
+
+        return new NextResponse(JSON.stringify(updatedWish), { status: 200 });
+    } catch (error: any) {
+        return new NextResponse("Error updating Wish: " + error.message, { status: 500 });
+    }
+};
+
+
 // post of the friend
