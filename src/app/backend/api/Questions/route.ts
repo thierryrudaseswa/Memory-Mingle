@@ -42,7 +42,7 @@ export const PATCH = async (request: Request) => {
 
         // Validate the ID and ensure it exists
         if (!id) {
-            return NextResponse.json({ error: "ID is required." }, { status: 400 });
+            return NextResponse.json({ error: "ID is required for sure." }, { status: 400 });
         }
 
         // Find the document by ID and update only the provided fields
