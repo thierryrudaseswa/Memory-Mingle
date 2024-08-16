@@ -48,7 +48,7 @@ export const PATCH = async (request: Request) => {
         // Find the document by ID and update only the provided fields
         const updatedQuestion = await Question.findByIdAndUpdate(
             id,
-            { $set: updateFields }, // Use $set to update only the specified fields
+            { $set: updateFields }, 
             { new: true, runValidators: true } // Return the updated document and run schema validation
         );
 
