@@ -1,17 +1,10 @@
-// src/app/layout.tsx
-'use client'
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
-// import ClientLayout from './ClientLayout';
+"use client";
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { useQuery } from 'react-query';
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
 
-const inter = Inter({ subsets: ["latin"] });
-
-// Create an instance of QueryClient
 const queryClient = new QueryClient();
 
 export default function RootLayout({
@@ -19,18 +12,32 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const isAuthenticated = false; // Replace with real auth check
+
+    if (!isAuthenticated) {
+      router.push('/signup'); // Redirect to signup if not authenticated
+    }
+  }, [router]);
+
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <QueryClientProvider client={queryClient}>
-          {/* <ClientLayout> */}
           <Header />
           {children}
           <Footer />
-          {/* </ClientLayout> */}
         </QueryClientProvider>
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script noModule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script
+          type="module"
+          src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+        ></script>
+        <script
+          noModule
+          src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+        ></script>
       </body>
     </html>
   );
