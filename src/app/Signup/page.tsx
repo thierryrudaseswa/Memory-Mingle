@@ -2,7 +2,10 @@ import React from 'react';
 
 const SignupForm: React.FC = () => {
   return (
-    <form className="max-w-md mx-auto">
+ 
+   <div className="p-12 flex justify-center bg-amber-300 h-[500px]">
+     <form className="bg-slate-50 relative p-12 rounded-3xl h-[350px]">
+      <h1 className='mb-3'>Happiness is not in the years of your life but in the life of your years.</h1>
       <div className="relative z-0 w-full mb-5 group">
         <input
           type="email"
@@ -92,6 +95,7 @@ const SignupForm: React.FC = () => {
         Submit
       </button>
     </form>
+   </div>
   );
 };
 

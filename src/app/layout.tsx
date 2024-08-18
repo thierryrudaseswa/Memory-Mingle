@@ -18,7 +18,7 @@ export default function RootLayout({
     const isAuthenticated = false; // Replace with real auth check
 
     if (!isAuthenticated) {
-      router.push('/signup'); // Redirect to signup if not authenticated
+      router.push('/Signup'); // Redirect to signup if not authenticated
     }
   }, [router]);
 
