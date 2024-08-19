@@ -3,10 +3,10 @@ import React from 'react';
 const SignupForm: React.FC = () => {
   return (
  
-   <div className="p-12 flex justify-center bg-amber-300 h-[500px]">
+   <div className="p-12 flex justify-center  h-[500px]">
      <form className="bg-slate-50 relative p-12 rounded-3xl h-[450px]">
-      <h1 className='mb-3 bg-slate-500 h-20 p-2'>Happiness is not in the years of your life but in the life of your years.</h1>
-      <div className="relative z-0 w-full bg-amber-300  flex h-16 group mt-8">
+      <h1 className='mb-3 h-20 p-2'>Happiness is not in the years of your life but in the life of your years.</h1>
+      <div className="relative z-0 w-full flex h-16 group mt-8">
         <input
           type="email"
           name="floating_email"
@@ -22,7 +22,7 @@ const SignupForm: React.FC = () => {
           Email address
         </label>
       </div>
-      <div className="relative z-0 w-full bg-amber-300 flex h-16 mt-8 group">
+      <div className="relative z-0 w-full flex h-16 mt-8 group">
         <input
           type="password"
           name="floating_password"
@@ -38,7 +38,7 @@ const SignupForm: React.FC = () => {
           Password
         </label>
       </div>
-      <div className="relative z-0 w-full bg-amber-300 flex h-16 mt-8 group">
+      <div className="relative z-0 w-full flex h-16 mt-8 group">
         <input
           type="password"
           name="repeat_password"
@@ -55,7 +55,7 @@ const SignupForm: React.FC = () => {
         </label>
       </div>
       <div className="grid md:grid-cols-2 md:gap-6">
-        <div className="relative z-0 w-full bg-amber-300 flex h-16 mt-8 group">
+        <div className="relative z-0 w-full flex h-16 mt-8 group">
           <input
             type="text"
             name="floating_first_name"
@@ -71,7 +71,7 @@ const SignupForm: React.FC = () => {
             First name
           </label>
         </div>
-        <div className="relative z-0 w-full bg-amber-300 flex  h-16 mt-8 group">
+        <div className="relative z-0 w-full flex  h-16 mt-8 group">
           <input
             type="text"
             name="floating_last_name"
@@ -88,7 +88,7 @@ const SignupForm: React.FC = () => {
           </label>
         </div>
       </div>
-     <div className=" bg-slate-500 mt-5 flex justify-center items-center">
+     <div className="  mt-5 flex justify-center items-center">
      <button
         type="submit"
         className="text-white w-[250px]  h-16 mt-8 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
