@@ -39,7 +39,7 @@ export const GET = async (req: Request) => {
 
         return new NextResponse(jsonResponse, { status: 200 });
     } catch (error: any) {
-        return new NextResponse("Error in fetching data: " + error.message, {
+        return new NextResponse("Error in fetching data from the database: " + error.message, {
             status: 500,
         });
     }
