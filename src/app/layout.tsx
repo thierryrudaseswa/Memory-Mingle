@@ -1,5 +1,72 @@
+// "use client";
+// import React, { useEffect, useState } from 'react';
+// import { useRouter } from 'next/navigation';
+// import { QueryClient, QueryClientProvider } from 'react-query';
+// import Header from './components/header/Header';
+// import Footer from './components/footer/Footer';
+
+// const queryClient = new QueryClient();
+
+// export default function RootLayout({
+//   children,
+// }: {
+//   children: React.ReactNode;
+// }) {
+//   const router = useRouter();
+//   const [isAuthenticated, setIsAuthenticated] = useState(false);
+//   const [isLoading, setIsLoading] = useState(true);
+
+//   useEffect(() => {
+//     const checkAuth = async () => {
+//       try {
+//         const response = await fetch('http://localhost:3000/backend/api/checkAuth/', {
+//           method: 'GET',
+//           credentials: 'include', // Include cookies if used
+//         });
+//         const data = await response.json();
+
+//         if (data.authenticated) {
+//           setIsAuthenticated(true);
+//         } else {
+//           router.push('/Signup'); // Redirect to signup if not authenticated
+//         }
+//       } catch (error) {
+//         console.error('Error checking authentication:', error);
+//         router.push('/Signup'); // Redirect on error
+//       } finally {
+//         setIsLoading(false);
+//       }
+//     };
+
+//     checkAuth();
+//   }, [router]);
+
+//   if (isLoading) {
+//     return <div>Loading...</div>; // Show a loading state while checking auth
+//   }
+
+//   return (
+//     <html lang="en">
+//       <body>
+//         <QueryClientProvider client={queryClient}>
+//           <Header />
+//           {children}
+//           <Footer />
+//         </QueryClientProvider>
+//         <script
+//           type="module"
+//           src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+//         ></script>
+//         <script
+//           noModule
+//           src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+//         ></script>
+//       </body>
+//     </html>
+//   );
+// }
 "use client";
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Header from './components/header/Header';
@@ -13,14 +80,37 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const router = useRouter();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const isAuthenticated = false; // Replace with real auth check
+    const checkAuth = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/backend/api/checkAuth/', {
+          method: 'GET',
+          credentials: 'include', // Include cookies if used
+        });
+        const data = await response.json();
 
-    if (!isAuthenticated) {
-      router.push('/Signup'); // Redirect to signup if not authenticated
-    }
+        if (data.authenticated) {
+          setIsAuthenticated(true);
+        } else {
+          router.push('/Signup'); // Redirect to signup if not authenticated
+        }
+      } catch (error) {
+        console.error('Error checking authentication:', error);
+        router.push('/Signup'); // Redirect on error
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    checkAuth();
   }, [router]);
+
+  if (isLoading) {
+    return <div>Loading...</div>; // Show a loading state while checking auth
+  }
 
   return (
     <html lang="en">
