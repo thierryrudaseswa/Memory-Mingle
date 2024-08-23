@@ -148,6 +148,9 @@ const SignupForm: React.FC = () => {
             Submit
           </button>
         </div>
+        <div className="already  mt-5 flex justify-center items-center text-lg">
+            <p>Already Have account ? <span className=' text-blue-600'> Login</span> </p>
+          </div>
       </form>
     </div>
   );

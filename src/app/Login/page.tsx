@@ -86,6 +86,9 @@ const LoginForm: React.FC = () => {
             Submit
           </button>
         </div>
+        <div className="already  mt-5 flex justify-center items-center text-lg">
+            <p>Don't have any account ? <span className=' text-blue-600'> Sign Up</span> </p>
+          </div>
       </form>
     </div>
   );
