@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import connectDB from "../../../../../config/database";
 import User from "../../Model/Registration";
@@ -21,7 +21,7 @@ export const POST = async (request: Request) => {
       return new NextResponse("Invalid credentials", { status: 400 });
     }
 
-    // Generate a JWT token
+    
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET!, {
       expiresIn: "1h",
     });
