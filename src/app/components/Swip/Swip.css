@@ -39,3 +39,43 @@
     transform: translateY(0);
   }
   
+/* Swip.css */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  z-index: 9998; /* Ensure the overlay appears above other content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #020223;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 9999; /* Ensure the modal itself appears above the overlay */
+  max-width: 500px;
+  width: 100%;
+  gap: 12px;
+
+  /* Box Shadow */
+  box-shadow: 4px 8px 16px rgba(0, 0, 139, 0.3), 8px 4px 6px rgba(0, 0, 139, 0.2);
+}
+
+
+.modal-close-button {
+ 
+  color: aliceblue;
+  border-radius: 20px ;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #000;
+}

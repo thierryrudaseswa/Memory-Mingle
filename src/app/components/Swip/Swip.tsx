@@ -1,3 +1,4 @@
+// HomePage.tsx
 import React, { useState } from 'react';
 import { NextPage } from 'next';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -10,7 +11,7 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Image from 'next/image';
 import { useQuery, useMutation, useQueryClient } from 'react-query';
 import Modal from './Modal';
-import './Swip.css'
+import './Swip.css';
 
 // Interface for FriendData
 interface FriendData {
@@ -113,8 +114,8 @@ const HomePage: NextPage = () => {
 
   return (
     <div className="container">
-      <div className="flex justify-center items-start text-white h-20 ">
-        <p className='flex-'> THE MARVELOUS WISHES AND PROMISES</p>
+      <div className="flex items-start text-white h-20 justify-between">
+        <p className="flex-">THE MARVELOUS WISHES AND PROMISES</p>
         <button onClick={() => setModalOpen(true)}>Post a Wish</button>
       </div>
 

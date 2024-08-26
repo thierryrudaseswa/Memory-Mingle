@@ -1,51 +1,39 @@
-import React, { useState } from 'react';
+// Modal.tsx
+import React from 'react';
+import "./Swip.css";
 
-interface ModalProps {
+const Modal: React.FC<{
   isOpen: boolean;
   onClose: () => void;
   onSubmit: (data: { FriendName: string; FriendWish: string; GiftName: string }) => void;
-}
+}> = ({ isOpen, onClose, onSubmit }) => {
+  if (!isOpen) return null;
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onSubmit }) => {
-  const [friendName, setFriendName] = useState('');
-  const [friendWish, setFriendWish] = useState('');
-  const [giftName, setGiftName] = useState('');
-
-  const handleSubmit = () => {
-    onSubmit({ FriendName: friendName, FriendWish: friendWish, GiftName: giftName });
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const newWish = {
+      FriendName: formData.get('FriendName') as string,
+      FriendWish: formData.get('FriendWish') as string,
+      GiftName: formData.get('GiftName') as string,
+    };
+    onSubmit(newWish);
     onClose();
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
-      <div className="bg-white p-6 rounded-lg">
-        <h2 className="text-xl font-bold mb-4">Post Your Wish</h2>
-        <input
-          type="text"
-          placeholder="Your Name"
-          className="border p-2 mb-2 w-full"
-          value={friendName}
-          onChange={(e) => setFriendName(e.target.value)}
-        />
-        <textarea
-          placeholder="Your Wish"
-          className="border p-2 mb-2 w-full"
-          value={friendWish}
-          onChange={(e) => setFriendWish(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Gift Name"
-          className="border p-2 mb-2 w-full"
-          value={giftName}
-          onChange={(e) => setGiftName(e.target.value)}
-        />
-        <div className="flex justify-end">
-          <button onClick={onClose} className="mr-2 p-2 bg-gray-500 text-white rounded">Cancel</button>
-          <button onClick={handleSubmit} className="p-2 bg-blue-500 text-white rounded">Post</button>
-        </div>
+    <div className="modal-overlay">
+      <div className="modal-content">
+        <button className="modal-close-button" onClick={onClose}>
+          &times;
+        </button>
+        <h2 className="flex justify-center items-center text-white">Post a Wish</h2>
+        <form onSubmit={handleSubmit} className="text-black">
+          <input type="text" name="FriendName" className="m-5 bg-slate rounded-md p-4" placeholder="Friend's Name" required />
+          <textarea name="FriendWish" className="m-5 rounded-md p-4" placeholder="Friend's Wish" required />
+          <input type="text" name="GiftName" className="ml-3 mr-5 rounded-md p-4" placeholder="Gift Name" required />
+          <button type="submit" className="rounded-2xl p-5 bg-white">Submit</button>
+        </form>
       </div>
     </div>
   );
