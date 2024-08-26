@@ -1,6 +1,9 @@
 'use client'
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation'; 
+import Link from 'next/link';
+import "../globals.css";
+
 
 const LoginForm: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -37,7 +40,7 @@ const LoginForm: React.FC = () => {
 
   return (
     <div className="p-12 flex justify-center h-[500px]">
-      <form onSubmit={handleSubmit} className="bg-slate-50 relative p-12 rounded-3xl h-[450px]">
+      <form onSubmit={handleSubmit} className="bg-slate-50 relative p-12 rounded-3xl h-[350px] shadow-lg text-white" style={{ background: "#020223", boxShadow: "0 4px 8px rgba(0, 0, 139, 0.3)" }}>
         <h1 className="mb-3 h-20 p-2">
           Happiness is not in the years of your life but in the life of your years.
         </h1>
@@ -65,7 +68,7 @@ const LoginForm: React.FC = () => {
             type="password"
             name="floating_password"
             id="floating_password"
-            className="block py-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+           className="block py-2.5 px-0 w-full text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
             required
             value={password}
@@ -73,7 +76,7 @@ const LoginForm: React.FC = () => {
           />
           <label
             htmlFor="floating_password"
-            className="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transform scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-10"
+             className="peer-focus:font-medium absolute text-lg text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-10"
           >
             Password
           </label>
@@ -87,7 +90,11 @@ const LoginForm: React.FC = () => {
           </button>
         </div>
         <div className="already  mt-5 flex justify-center items-center text-lg">
-            <p>Don't have any account ? <span className=' text-blue-600'> Sign Up</span> </p>
+            <p>Don't have any account ? 
+              <Link href="/Signup">
+              <span className=' text-blue-600'> Sign Up</span> </Link>
+             
+              </p>
           </div>
       </form>
     </div>

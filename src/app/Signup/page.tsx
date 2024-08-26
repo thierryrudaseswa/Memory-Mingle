@@ -1,7 +1,9 @@
 "use client";
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation'; // Import useRouter
+import { useRouter } from 'next/navigation';
+import Link from 'next/link'; // Import Link from Next.js
+import "../globals.css";
 
 const SignupForm: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -9,8 +11,8 @@ const SignupForm: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  
-  const router = useRouter(); // Initialize useRouter
+
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -148,9 +150,13 @@ const SignupForm: React.FC = () => {
             Submit
           </button>
         </div>
-        <div className="already  mt-5 flex justify-center items-center text-lg">
-            <p>Already Have account ? <span className=' text-blue-600'> Login</span> </p>
-          </div>
+        <div className="already mt-5 flex justify-center items-center text-lg">
+          <p>Already Have account? 
+            <Link href="/Login">
+              <span className="text-blue-600 cursor-pointer"> Login</span>
+            </Link>
+          </p>
+        </div>
       </form>
     </div>
   );
