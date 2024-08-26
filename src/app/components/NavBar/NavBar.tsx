@@ -1,15 +1,32 @@
-'use client'
+'use client';
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      // Call the logout API route
+      await fetch('/api/logout', { method: 'POST' });
+
+      // Clear token from localStorage or cookies
+      localStorage.removeItem('token'); 
+
+      // Redirect user to login page or home page
+      router.push('/Login');
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  };
 
   return (
-    <nav className=" text-white ">
-      <div className="flex  flex-wrap items-center justify-between rounded-2xl p-4 relative">
+    <nav className="text-white">
+      <div className="flex flex-wrap items-center justify-between rounded-2xl p-4 relative">
         <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <div className="relative h-14 w-16 rounded-3xl overflow-hidden">
             <Image src="/Image/thierry28.jpeg" alt="Thierry's Photo" layout="fill" objectFit="cover" />
@@ -46,7 +63,7 @@ const Navbar = () => {
                   <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
                 </li>
                 <li>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                  <button onClick={handleLogout} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white w-full text-left">Sign out</button>
                 </li>
               </ul>
             </div>
@@ -58,7 +75,7 @@ const Navbar = () => {
             aria-controls="navbar-user"
             aria-expanded={menuOpen ? 'true' : 'false'}
             onClick={() => setMenuOpen(!menuOpen)}
-          >
+          > 
             <span className="sr-only">Open main menu</span>
             <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />

@@ -1,6 +1,4 @@
-'use client';
-
-import React from 'react';
+import React, { useState } from 'react';
 import { NextPage } from 'next';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -10,9 +8,9 @@ import 'swiper/css/navigation';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Image from 'next/image';
+import { useQuery, useMutation, useQueryClient } from 'react-query';
+import Modal from './Modal';
 import './Swip.css'
-
-import { useQuery } from 'react-query';
 
 // Interface for FriendData
 interface FriendData {
@@ -26,6 +24,21 @@ const FriendWishFetch = async (): Promise<FriendData[]> => {
   const response = await fetch('http://localhost:3000/backend/api/FriendWish/');
   if (!response.ok) {
     throw new Error('Network response was not ok');
+  }
+  return response.json();
+};
+
+// POST function to send new data to the API
+const postFriendWish = async (data: { FriendName: string; FriendWish: string; GiftName: string }) => {
+  const response = await fetch('http://localhost:3000/backend/api/FriendWish/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+  if (!response.ok) {
+    throw new Error('Failed to post the wish');
   }
   return response.json();
 };
@@ -80,14 +93,31 @@ const Card: React.FC<{ friend: FriendData }> = ({ friend }) => {
 
 // Main HomePage component
 const HomePage: NextPage = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+  const queryClient = useQueryClient();
+
   const { data, error, isLoading } = useQuery('aboutFriendWish', FriendWishFetch);
+
+  const mutation = useMutation(postFriendWish, {
+    onSuccess: () => {
+      queryClient.invalidateQueries('aboutFriendWish');
+    },
+  });
+
+  const handleModalSubmit = (newWish: { FriendName: string; FriendWish: string; GiftName: string }) => {
+    mutation.mutate(newWish);
+  };
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {(error as Error).message}</div>;
 
   return (
     <div className="container">
-      <div className="flex justify-center items-start text-white h-20">THE MARVELOUS WISHES AND PROMISES</div>
+      <div className="flex justify-center items-start text-white h-20 ">
+        <p className='flex-'> THE MARVELOUS WISHES AND PROMISES</p>
+        <button onClick={() => setModalOpen(true)}>Post a Wish</button>
+      </div>
+
       <Swiper
         modules={[EffectCoverflow, Pagination, Navigation]}
         effect="coverflow"
@@ -124,6 +154,8 @@ const HomePage: NextPage = () => {
           <div className="swiper-pagination"></div>
         </div>
       </Swiper>
+
+      <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)} onSubmit={handleModalSubmit} />
     </div>
   );
 };
