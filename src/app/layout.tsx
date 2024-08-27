@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Header from './components/header/Header';
@@ -13,11 +13,40 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Always redirect to the Signup page
-    router.push('/Signup');
+    // Check if the user is authenticated
+    const checkAuth = async () => {
+      try {
+        // Attempt to retrieve the token from cookies
+        const res = await fetch('http://localhost:3000/backend/api/checkAuth', {
+          method: 'GET',
+          credentials: 'include',
+        });
+
+        if (res.ok) {
+          // User is authenticated, redirect to the landpage
+          router.push('/');
+        } else {
+          // User is not authenticated, redirect to the Signup page
+          router.push('/Signup');
+        }
+      } catch (error) {
+        console.error('Error checking auth:', error);
+        router.push('/Signup');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkAuth();
   }, [router]);
+
+  if (loading) {
+    // Optionally, you can show a loading spinner while checking auth status
+    return <div>Loading...</div>;
+  }
 
   return (
     <html lang="en">

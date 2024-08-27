@@ -35,9 +35,19 @@ export const POST = async (request: Request) => {
       expiresIn: "1h",
     });
 
-    return new NextResponse(JSON.stringify({ token }), {
-      status: 201,
+    // Set the JWT token as a cookie
+    const response = new NextResponse(
+      JSON.stringify({ success: true, message: "User registered successfully" }),
+      { status: 201 }
+    );
+    response.cookies.set("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      path: "/",
     });
+
+    return response;
   } catch (error: any) {
     return new NextResponse("Error in creating user: " + error.message, {
       status: 500,

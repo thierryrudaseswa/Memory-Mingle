@@ -1,7 +1,9 @@
 'use client'
+import { useEffect, useState } from 'react';
 import Navbar from '../NavBar/NavBar'
 
 const Header = () => {
+  
   return (
     <div className='sticky-header' style={{ background: "#020223" }}>
       <Navbar />

@@ -40,11 +40,12 @@ const postFriendWish = async (data: { FriendName: string; FriendWish: string; Gi
   });
   if (!response.ok) {
     throw new Error('Failed to post the wish');
+    console.log("")
   }
   return response.json();
 };
 
-// Card component to display each friend's wish and gift
+
 const Card: React.FC<{ friend: FriendData }> = ({ friend }) => {
   return (
     <div className="smsfr grid p-6 rounded-3xl justify-center text-white lg:w-[500px] xs:w-[430px] xs:h-[430px]" style={{ background: "#0e0146" }}>
