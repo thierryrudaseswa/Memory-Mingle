@@ -1,4 +1,3 @@
-// HomePage.tsx
 import React, { useState } from 'react';
 import { NextPage } from 'next';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -21,7 +20,7 @@ interface FriendData {
 }
 
 // Fetch function to get data from the API
-const FriendWishFetch = async (): Promise<FriendData[]> => {
+const fetchFriendWishes = async (): Promise<FriendData[]> => {
   const response = await fetch('http://localhost:3000/backend/api/FriendWish/');
   if (!response.ok) {
     throw new Error('Network response was not ok');
@@ -30,21 +29,32 @@ const FriendWishFetch = async (): Promise<FriendData[]> => {
 };
 
 // POST function to send new data to the API
-const postFriendWish = async (data: { FriendName: string; FriendWish: string; GiftName: string }) => {
-  const response = await fetch('http://localhost:3000/backend/api/FriendWish/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-  if (!response.ok) {
-    throw new Error('Failed to post the wish');
-    console.log("")
-  }
-  return response.json();
-};
+const postFriendWish = async (newWish: FriendData) => {
+  console.log("Submitting new wish");
 
+  try {
+    const response = await fetch('http://localhost:3000/backend/api/FriendWish/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newWish),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Failed to post the wish:', errorText);
+      throw new Error('Failed to post the wish');
+    }
+
+    const result = await response.json();
+    console.log('Success:', result);
+    return result;
+  } catch (error) {
+    console.error('Error occurred:', error);
+    throw error;
+  }
+};
 
 const Card: React.FC<{ friend: FriendData }> = ({ friend }) => {
   return (
@@ -56,7 +66,7 @@ const Card: React.FC<{ friend: FriendData }> = ({ friend }) => {
               src="/Image/thierry28.jpeg"
               alt={friend.FriendName}
               fill
-              className="elem "
+              className="elem"
             />
           </div>
         </div>
@@ -98,15 +108,18 @@ const HomePage: NextPage = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const queryClient = useQueryClient();
 
-  const { data, error, isLoading } = useQuery('aboutFriendWish', FriendWishFetch);
+  const { data, error, isLoading } = useQuery('aboutFriendWish', fetchFriendWishes);
 
   const mutation = useMutation(postFriendWish, {
     onSuccess: () => {
       queryClient.invalidateQueries('aboutFriendWish');
     },
+    onError: (error: Error) => {
+      console.error('Error posting wish:', error.message);
+    },
   });
 
-  const handleModalSubmit = (newWish: { FriendName: string; FriendWish: string; GiftName: string }) => {
+  const handleModalSubmit = (newWish: FriendData) => {
     mutation.mutate(newWish);
   };
 

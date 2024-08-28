@@ -34,13 +34,24 @@ const Navbar = () => {
   };
 
   const handleLogin = async () => {
-    // Logic to handle login
-    // On successful login:
-    const token = 'newly_generated_token'; // Replace with actual token from response
-    localStorage.setItem('token', token);
-    setIsAuthenticated(true); // Update authentication state immediately
-    router.push('/'); // Redirect to homepage or another page
+    try {
+      // Logic to handle login
+      // Assume you make a request to an API and receive a token on successful login
+      const token = 'newly_generated_token'; // Replace with actual token from the response
+  
+      // Store the token in localStorage
+      localStorage.setItem('token', token);
+  
+      // Update the authentication state
+      setIsAuthenticated(true);
+  
+      // Reload the entire page to reflect the authentication state
+      window.location.reload();
+    } catch (error) {
+      console.error('Login failed:', error);
+    }
   };
+  
 
   return (
     <nav className="text-white">

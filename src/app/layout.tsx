@@ -28,6 +28,7 @@ export default function RootLayout({
         if (res.ok) {
           // User is authenticated, redirect to the landpage
           router.push('/');
+          // window.location.reload();
         } else {
           // User is not authenticated, redirect to the Signup page
           router.push('/Signup');
