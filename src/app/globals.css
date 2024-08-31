@@ -148,10 +148,11 @@ body {
 /* Container styling */
 .container {
   max-width: 120rem;
-   padding: 3px;
+   padding: 4px;
   margin: 0 auto;
   background-color: #020223;
   border-radius: 20px;
+
 }
 
 /* Heading styles */
@@ -168,7 +169,7 @@ body {
   height: 50rem; */
   /* padding: 2rem 0; */
   position: relative;
-  /* background-color: #6a59ff; */
+
 }
 
 /* Swiper slide styles */

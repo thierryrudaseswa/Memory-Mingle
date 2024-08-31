@@ -1,9 +1,11 @@
-"use client";
+"use client"; // This makes the component a Client Component
+
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
+import { AuthProvider } from './AuthContext'; // Import AuthProvider
 
 const queryClient = new QueryClient();
 
@@ -16,21 +18,16 @@ export default function RootLayout({
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check if the user is authenticated
     const checkAuth = async () => {
       try {
-        // Attempt to retrieve the token from cookies
         const res = await fetch('http://localhost:3000/backend/api/checkAuth', {
           method: 'GET',
           credentials: 'include',
         });
 
         if (res.ok) {
-          // User is authenticated, redirect to the landpage
           router.push('/');
-          // window.location.reload();
         } else {
-          // User is not authenticated, redirect to the Signup page
           router.push('/Signup');
         }
       } catch (error) {
@@ -45,18 +42,19 @@ export default function RootLayout({
   }, [router]);
 
   if (loading) {
-    // Optionally, you can show a loading spinner while checking auth status
     return <div>Loading...</div>;
   }
 
   return (
     <html lang="en">
       <body>
-        <QueryClientProvider client={queryClient}>
-          <Header />
-          {children}
-          <Footer />
-        </QueryClientProvider>
+        <AuthProvider>
+          <QueryClientProvider client={queryClient}>
+            <Header />
+            {children}
+            <Footer />
+          </QueryClientProvider>
+        </AuthProvider>
         <script
           type="module"
           src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"

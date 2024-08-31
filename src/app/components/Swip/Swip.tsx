@@ -93,7 +93,7 @@ const Card: React.FC<{ friend: FriendData }> = ({ friend }) => {
                 src="/Image/thierry28.jpeg"
                 alt={friend.FriendName}
                 fill
-                className="lemen"
+                className="lemen p-0"
               />
             </div>
           </div>
