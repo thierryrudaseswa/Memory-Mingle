@@ -81,7 +81,7 @@ const Card: React.FC<{ friend: FriendData }> = ({ friend }) => {
 
       <div className="gif gap-4 p-4 rounded-2xl">
         <div>
-          <p className="row-span-1 flex justify-center items-center font-bold mb-5">
+          <p className="row-span-1 p-o flex justify-center items-center font-bold mb-5">
             Excited for your birthday! I have a special gift for you that I know you'll love, which is...
           </p>
           <p className="font-extrabold grid pl-2 text-2xl mb-2 justify-center items-center">
