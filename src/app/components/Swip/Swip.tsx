@@ -71,7 +71,7 @@ const Card: React.FC<{ friend: FriendData }> = ({ friend }) => {
           </div>
         </div>
 
-        <div className="wishes col-span-2 grid justify-start items-center p-2">
+        <div className="wishes col-span-2 p-0 grid justify-start items-center p-2">
           <div className="rounded-2xl">
             <p className="flex justify-center items-center">{friend.FriendWish}</p>
             <p className="font-extrabold flex justify-end">{friend.FriendName}</p>

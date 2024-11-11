@@ -43,7 +43,7 @@ const Closer: React.FC<closerAnswers> = ({person}) => {
       </p>
       <div id="accordion-nested-parent" data-accordion="collapse">
         {qaPairs.map((qaPair, index) => (
-          <div key={index} className="mb-4 p- border border-gray-200 dark:border-gray-700">
+          <div key={index} className="mb-4 p-0 border border-gray-200 dark:border-gray-700">
             <h2 id={`accordion-collapse-heading-${index}`}>
               <button
                 type="button"
@@ -68,7 +68,7 @@ const Closer: React.FC<closerAnswers> = ({person}) => {
             {activeIndex === index && (
               <div
                 id={`accordion-collapse-body-${index}`}
-                className="p-5 text-gray-600 dark:text-gray-400"
+                className="p-5 text-gray-600 dark:text-gray-400 p-0"
                 aria-labelledby={`accordion-collapse-heading-${index}`}
               >
                 <p>{qaPair.answer}</p>

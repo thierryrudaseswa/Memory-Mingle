@@ -12,17 +12,17 @@ const Navbar = () => {
   const router = useRouter();
 
   useEffect(() => {
-    // Check if the user is authenticated by checking local storage
+
     const storedAuthState = localStorage.getItem('isAuthenticated');
     if (storedAuthState === 'true') {
-      login(); // Update context state
+      login(); 
     }
   }, []);
 
   useEffect(() => {
     if (isAuthenticated) {
       localStorage.setItem('isAuthenticated', 'true');
-      // window.location.reload();// Refresh the page when authenticated
+   
     } else {
       localStorage.removeItem('isAuthenticated');
     }
